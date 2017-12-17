@@ -15,7 +15,7 @@ export class DropHistoryComponent implements OnInit {
   dropHistory;
   viewedDropHistory;
   dropHistoryLength;
-  host = environment.serverHost;
+  // host = environment.serverHost;
   currentIndex = 0;
   constructor(private http: HttpClient) { }
 
@@ -25,16 +25,16 @@ export class DropHistoryComponent implements OnInit {
     this.dropHistoryLength = this.dropHistory.length;
   }
 
-  callApi() {
-    this.http.get(this.host + 'product/3948/batch/4843/drop').subscribe(
-      dropHistory => {
-        this.dropHistory = dropHistory;
-        this.viewHistory(0);
-        this.dropHistoryLength = this.dropHistory.length;
-      },
-      error => {console.log(error); }
-    );
-  }
+  // callApi() {
+  //   this.http.get(this.host + 'product/3948/batch/4843/drop').subscribe(
+  //     dropHistory => {
+  //       this.dropHistory = dropHistory;
+  //       this.viewHistory(0);
+  //       this.dropHistoryLength = this.dropHistory.length;
+  //     },
+  //     error => {console.log(error); }
+  //   );
+  // }
 
   viewHistory(direction) {
     this.currentIndex += direction;

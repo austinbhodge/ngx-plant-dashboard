@@ -22,7 +22,7 @@ export class MiqViewComponent implements OnInit {
   colorScheme = {
     domain: ['#4e89f7']
   };
-  host = environment.serverHost;
+  // host = environment.serverHost;
   batchNumber: number;
   lineData = [
     {

@@ -3,6 +3,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
 
+import { data } from '../../miq/miq-view/data';
+
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -17,7 +19,7 @@ export class ChartModalComponent implements OnInit {
   colorScheme = {
     domain: ['#df3a3a']
   };
-  host = environment.serverHost;
+  // host = environment.serverHost;
   lineData = [
     {
       name : '',
@@ -27,26 +29,26 @@ export class ChartModalComponent implements OnInit {
   constructor(
     private http: HttpClient,
     public dialogRef: MatDialogRef<ChartModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public ctx: any) { }
 
     ngOnInit() {
-      this.getData();
+      this.parseChartData(data.daily);
     }
 
     onNoClick(): void {
       this.dialogRef.close();
     }
 
-    getData() {
-      this.http.get(this.host + 'product/3948/batch/4943/daily').subscribe(
-        chartData => { this.parseChartData(chartData); },
-        error => {console.log(error); }
-      );
-    }
+    // getData() {
+    //   this.http.get(this.host + 'product/3948/batch/4943/daily').subscribe(
+    //     chartData => { this.parseChartData(chartData); },
+    //     error => {console.log(error); }
+    //   );
+    // }
 
     parseChartData(chartData) {
       this.lineData[0].series = [];
-      this.lineData[0].name = this.data.chartRef;
+      this.lineData[0].name = this.ctx.chartRef;
       for (const entry of chartData){
         const graphPoint = {
           name : moment(entry.date, 'MM-DD-YYYY').format('MMMM D'),

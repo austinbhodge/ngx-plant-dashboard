@@ -15,7 +15,7 @@ export class PlantMapComponent implements OnInit {
   lng: number;
   zoom: number;
   plants;
-  host = environment.serverHost;
+  // host = environment.serverHost;
   styles = mapStyles;
   sliderValue: number;
 

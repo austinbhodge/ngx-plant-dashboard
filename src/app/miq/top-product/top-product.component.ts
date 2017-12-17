@@ -10,18 +10,18 @@ import { data } from './data';
 })
 export class TopProductComponent implements OnInit {
   topProducts;
-  host = environment.serverHost;
+  // host = environment.serverHost;
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.topProducts = data;
   }
 
-  apiCall() {
-    this.http.get(this.host + 'product/3948/batch/4843/top').subscribe(
-      topProducts => {this.topProducts = topProducts; },
-      error => {console.log(error); }
-    );
-  }
+  // apiCall() {
+  //   this.http.get(this.host + 'product/3948/batch/4843/top').subscribe(
+  //     topProducts => {this.topProducts = topProducts; },
+  //     error => {console.log(error); }
+  //   );
+  // }
 
 }

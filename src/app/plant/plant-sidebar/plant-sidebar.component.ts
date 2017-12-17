@@ -12,7 +12,7 @@ import { environment } from '../../../environments/environment';
 })
 export class PlantSidebarComponent implements OnInit {
   @Input() productId: number;
-  host = environment.serverHost;
+  // host = environment.serverHost;
   product;
   batchId;
   isBatchSelected = false;
@@ -20,7 +20,6 @@ export class PlantSidebarComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
-    console.log(this.productId);
     // this.http.get(this.host + 'product/' + this.productId).subscribe(
     //   product => {this.product = product; },
     //   error => {console.log(error); }

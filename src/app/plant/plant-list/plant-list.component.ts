@@ -11,10 +11,10 @@ import { data } from './data';
 })
 export class PlantListComponent implements OnInit {
   plants;
-  // loadingIndicator = true;
+  loadingIndicator = false;
   sidebarOpen = false;
   productId;
-  host = environment.serverHost;
+  // host = environment.serverHost;
   columns = [
     {name : 'Plant Name', prop: 'name'},
     {name : 'Region'},

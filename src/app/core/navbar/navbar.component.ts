@@ -17,7 +17,7 @@ import { environment } from '../../../environments/environment';
 })
 export class NavbarComponent implements OnInit {
   citys;
-  host = environment.serverHost;
+  // host = environment.serverHost;
   cityCtrl: FormControl;
   filteredCitys: Observable<any[]>;
 
