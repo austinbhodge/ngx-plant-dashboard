@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: 'ngx-plant-dashboard', redirectTo: 'plant/map',  pathMatch: 'full' }
+  { path: '', redirectTo: 'plant/map',  pathMatch: 'full' }
 ];
 
 @NgModule({
