@@ -1,0 +1,102 @@
+  .date-table{
+    width:100%;
+    margin-top: 5px;
+  }
+
+  .mining-view-container{
+    height: 100%;
+    width: 100%;
+    .top-row{
+      height: 55%;
+      overflow: hidden;
+      .graph-view{
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        .entry{
+          margin-top: 30px;
+          width: 300px;
+          height: 100%;
+
+          .title{
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.9em;
+          }
+          .sub-title{
+            text-align: center;
+            color: #777;
+            font-size: 0.8em;
+          }
+          hr{
+            margin-bottom: -5px;
+          }
+          .small-circle{
+            margin: 0 auto;
+            width: 20px;
+            height: 20px;
+            border: solid 4px rgb(131, 131, 131);
+            border-radius: 50%;
+            margin-top: -10px;
+            background: white;
+          }
+          .big-circle{
+            margin: 0 auto;
+            text-align: center;
+            width: 75px;
+            height: 75px;
+            padding:30px;
+            padding-left: 0;
+            padding-right: 0;
+            border: solid 1px rgb(189, 189, 189);
+            border-radius: 50%;
+            margin-top: -10px;
+            color: #777;
+            font-size: 0.8em;
+          }
+        }
+      }
+    }
+
+    .bottom-row{
+      height: 35%;
+      width: 90%;
+      margin-left: 3%;
+      display: inline-flex;
+      justify-content: space-between;
+      .mining-slider{
+        width: 60%;
+        margin-top:12px;
+      }
+      button{
+        &.mat-mini-fab{
+          background: #fff;
+          margin-top:10px;
+          color: #868686;
+        }
+        &.mat-fab{
+          background: rgb(76, 175, 61);
+          color: #ffffff;
+        }
+        &:focus {
+          outline:0;
+        }
+      }
+      .progress-label{
+        color: #777;
+        width:13%;
+        margin-top:25px;
+        font-size: 0.85em;
+      }
+    }
+  }
+
+::ng-deep .mat-accent .mat-slider-thumb {
+  background-color: rgb(18, 211, 245);
+}
+::ng-deep .mat-accent .mat-slider-thumb-label {
+  background-color: rgb(18, 211, 245);
+}
+::ng-deep .mat-accent .mat-slider-track-fill {
+  background-color: rgb(18, 211, 245);
+}

@@ -1,0 +1,79 @@
+<div class="sidebar-container">
+  <div class="sidebar-content">
+    <h5>
+      <img src="assets/icons/Equipment_Icon.svg" width="40" height="40" alt="" class="d-inline-block align-center idc-icon">
+      Equipment
+    </h5>
+    <div *ngIf="product != undefined">
+      <div *ngFor="let equipment of product.equipment; index as i;">
+        <div class="equipment-row">
+          <div class="equipment-open">
+            <button mat-icon-button (click)="toggleEquipment(i)">
+              <mat-icon aria-label="open list" *ngIf="equipment.opened != true">add</mat-icon>
+              <mat-icon aria-label="open list" *ngIf="equipment.opened == true">remove</mat-icon>
+            </button>
+          </div>
+          <div class="equipment-name"> {{equipment.name}} </div>
+          <div class="equipment-yield" [class.good-yield]="equipment.yield > 75" [class.bad-yield]="equipment.yield < 75"> {{equipment.yield}}% </div>
+        </div>
+        <div *ngIf="equipment.opened == true">
+            <div *ngFor="let batchGroup of equipment.batchGroups; index as j;">
+                <div class="batch-group-row">
+                    <div class="batch-group-open">
+                      <button mat-icon-button (click)="toggleProduct(i, j)">
+                        <mat-icon aria-label="open list" *ngIf="batchGroup.opened != true">add</mat-icon>
+                        <mat-icon aria-label="open list" *ngIf="batchGroup.opened == true">remove</mat-icon>
+                      </button>
+                    </div>
+                    <div class="batch-group-name"> {{batchGroup.name}} </div>
+                    <div class="batch-group-yield" [class.good-yield]="batchGroup.yield > 75" [class.bad-yield]="75 > batchGroup.yield"> {{batchGroup.yield}}% </div>
+                  </div>
+                  <div *ngIf="batchGroup.opened == true">
+                      <div *ngFor="let batch of batchGroup.batches;">
+                          <div class="batch-row">
+                              <div class="batch-choose">
+                                <mat-checkbox [id]="batch.id" [disabled]="isBatchSelected && batch.id != batchId" (change)="batchSelected($event)"></mat-checkbox>
+                              </div>
+                              <div class="batch-name"> {{batch.name}} </div>
+                              <div class="batch-yield" [class.good-yield]="batch.yield > 75" [class.bad-yield]="75 > batch.yield"> {{batch.yield}}% </div>
+                            </div>
+                      </div>
+                  </div>
+            </div>
+        </div>
+
+        <hr>
+      </div>
+      <br>
+      <h5>
+        <img src="assets/icons/Star_Icon.svg" width="40" height="40" alt="" class="d-inline-block align-center idc-icon">
+        Quality Performance
+      </h5>
+      <div class="performance-container">
+        <div class="performance-box">
+          <div class="performance-stat" [style.color]="product.performance.scrapPercentage.color">{{product.performance.scrapPercentage.value}}%</div>
+          <div class="performance-subtitle">Scrap Percentage</div>
+        </div>
+        <div class="performance-box">
+            <div class="performance-stat" [style.color]="product.performance.sigmaLevel.color">{{product.performance.sigmaLevel.value}}%</div>
+            <div class="performance-subtitle">Sigma Level</div>
+        </div>
+        <div class="performance-box">
+            <div class="performance-stat" [style.color]="product.performance.ppm.color">{{product.performance.ppm.value}}%</div>
+            <div class="performance-subtitle">Parts Per Million</div>
+        </div>
+        <div class="performance-box">
+            <div class="performance-stat" [style.color]="product.performance.firstPassYield.color">{{product.performance.firstPassYield.value}}%</div>
+            <div class="performance-subtitle">First Pass Yield</div>
+        </div>
+        <div class="performance-box">
+            <div class="performance-stat" [style.color]="product.performance.costQuality.color">{{product.performance.costQuality.value}}%</div>
+            <div class="performance-subtitle">Cost Of Quality</div>
+        </div>
+      </div>
+    </div>
+    <div class="submit-btn">
+      <button mat-raised-button [disabled]="!isBatchSelected" color="primary" (click)="batchSubmitted()">Submit</button>
+    </div>
+  </div>
+</div>

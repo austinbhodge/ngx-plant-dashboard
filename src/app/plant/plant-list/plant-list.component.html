@@ -1,0 +1,19 @@
+<div class="list-container">
+<h5>
+  <img src="assets/icons/Plant_Icon.svg" width="40" height="40" alt="" class="d-inline-block align-center idc-icon">
+  Plant List
+</h5>
+
+
+    <ngx-datatable
+        class="material"
+        [rows]="plants"
+        [loadingIndicator]="loadingIndicator"
+        [columns]="columns"
+        [columnMode]="'force'"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="'auto'"
+        [sorts]="[{prop: 'name', dir: 'desc'}]">
+    </ngx-datatable>
+</div>

@@ -1,0 +1,78 @@
+<div class="widget-container">
+    <div class="widget-title">
+      <h5 class="d-inline-block">
+        <img src="assets/icons/Process Mining.svg" width="45" height="45" alt="" class="d-inline-block align-center idc-icon">
+        Process Mining
+      </h5>
+      <div class="widget-tabs">
+        <div class="d-inline">
+          <div class="tab" [class.active]="activeTab == 'process-mining-view'" (click)="changeTab('process-mining-view')"> Process Mining View</div>
+        </div>
+        <div class="d-inline">
+          <div class="tab" [class.active]="activeTab == 'rank-list'" (click)="changeTab('rank-list')">Rank List  </div>
+        </div>
+        <div class="d-inline">
+            <button mat-icon-button class="d-inline" (click)="expandSelf()">
+                <mat-icon aria-label="Change Chart Type">fullscreen</mat-icon>
+            </button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="activeTab == 'process-mining-view'" class="mining-view-container">
+      <div class="top-row">
+        <div class="graph-view" [style.width.px]="calculatedWidth" [style.left.px]="(percentThrough * -0.01) * calculatedWidth">
+          <div *ngFor="let entry of miningData" class="entry">
+            <div class="title">
+              {{entry.title}}
+            </div>
+            <div class="sub-title">
+              {{entry.time}}
+            </div>
+            <hr>
+            <div class="small-circle"></div>
+            <div class="big-circle">
+              {{entry.mills}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-row">
+        <button mat-mini-fab>
+            <mat-icon>fast_rewind</mat-icon>
+        </button>
+        <button mat-fab>
+            <mat-icon>play_arrow</mat-icon>
+        </button>
+        <button mat-mini-fab>
+            <mat-icon>fast_forward</mat-icon>
+        </button>
+        <mat-slider
+          class="mining-slider"
+          [max]="100"
+          [min]="0"
+          [step]="1"
+          [thumb-label]="false"
+          [value]="percentThrough"
+          (input)="moveProcess($event)">
+        </mat-slider>
+        <div class="progress-label">{{100 - percentThrough}}% Left</div>
+      </div>
+    </div>
+
+    <div *ngIf="activeTab == 'rank-list'" class="data-table">
+        <ngx-datatable
+        class="material"
+        [style.height.vh]="chartHeight"
+        [rows]="data"
+        [loadingIndicator]="loadingIndicator"
+        [columns]="columns"
+        [columnMode]="'force'"
+        [headerHeight]="50"
+        [footerHeight]="40"
+        [rowHeight]="40"
+        [scrollbarV]="true"
+        [sorts]="[{prop: 'name', dir: 'desc'}]">
+    </ngx-datatable>
+    </div>
+</div>

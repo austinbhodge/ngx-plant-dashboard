@@ -1,0 +1,52 @@
+<div class="widget-container">
+    <div class="widget-title">
+      <h5 class="d-inline-block">
+        <img src="assets/icons/Alert.svg" alt="" class="d-inline-block align-center idc-icon">
+        Alerts &amp; Notifications
+      </h5>
+      <div class="widget-tabs">
+            <button mat-icon-button class="d-inline" (click)="expandSelf()" >
+                <mat-icon aria-label="Change Chart Type">fullscreen</mat-icon>
+            </button>
+        </div>
+      </div>
+
+        <ngx-datatable
+        class="material"
+        [style.height.vh]="chartHeight"
+        [rows]="data"
+        [loadingIndicator]="loadingIndicator"
+        [columnMode]="'flex'"
+        [footerHeight]="40"
+        [headerHeight]="50"
+        [rowHeight]="getRowHeight"
+        [scrollbarV]="true"
+        [sorts]="[{prop: 'name', dir: 'desc'}]"
+        (page)="onPage($event)">
+
+        <ngx-datatable-column name="Product" [flexGrow]="1">
+            <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                <strong>{{value}}</strong>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Step ID" [flexGrow]="2">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+                <span>{{value}}%</span>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Observations" [flexGrow]="3">
+            <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                <div *ngFor="let obs of row.observations; let i = index">
+                  <div><strong>{{i + 1}}.</strong> {{obs}}</div>
+                </div>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [flexGrow]="1">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <button mat-button class="view">View</button><br>
+                <button mat-button class="send" (click)="openMessageModal(row)">Send</button>
+            </ng-template>
+        </ngx-datatable-column>
+    </ngx-datatable>
+</div>
+

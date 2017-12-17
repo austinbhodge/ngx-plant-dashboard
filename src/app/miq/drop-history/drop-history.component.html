@@ -1,0 +1,30 @@
+<div class="drop-container">
+    <div class="drop-title">
+
+        <h5 class="d-inline-block">
+            <img src="assets/icons/Drop_history.svg" width="45" height="45" alt="" class="d-inline-block align-center idc-icon">
+            Drop History
+        </h5>
+    </div>
+    <div class="d-flex justify-content-center" style="height: 5px;">
+        <button mat-mini-fab [disabled]="currentIndex < 1" (click)="viewHistory(-1)">
+          <mat-icon >expand_less</mat-icon>
+        </button>
+      </div>
+    <div class="history-container">
+      <div class="history-entry" *ngFor="let drop of viewedDropHistory">
+        <div class="entry-date">{{drop.parsedDate}}</div>
+        <div class="entry-name">{{drop.productName}}</div>
+        <div class="entry-yield">{{drop.yield}}%</div>
+        <div class="entry-bullet"></div>
+        <div class="bullet-connector"></div>
+
+      </div>
+
+    </div>
+  <div class="d-flex justify-content-center">
+    <button mat-mini-fab [disabled]="(currentIndex + 4) > dropHistoryLength" (click)="viewHistory(1)">
+      <mat-icon >expand_more</mat-icon>
+    </button>
+  </div>
+</div>

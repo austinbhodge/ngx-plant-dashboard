@@ -1,0 +1,183 @@
+.sidebar-container{
+  position: absolute;
+  right: 0px;
+  top: 60px;
+  height: calc(100vh - 60px);
+  width: 450px;
+  background: white;
+  overflow-y: scroll;
+  box-shadow: 0px 2px 8px 0px rgb(177, 177, 177);
+}
+
+.sidebar-content{
+  padding: 20px;
+  margin-left: 25px;
+
+  h5{
+    margin-top: 50px;
+    margin-bottom: 30px;
+    font-size: 1.05em;
+  }
+
+  hr{
+    margin-right: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .equipment-row{
+    display: flex;
+    width: 100%;
+
+    .equipment-open{
+      margin-right: 5px;
+    }
+    .equipment-name{
+      width:65%;
+      font-size: 1.05em;
+      padding-top: 5px;
+    }
+    .equipment-yield{
+      text-align: right;
+      font-weight: bold;
+      font-size: 1.05em;
+      width: 15%;
+      padding-top: 5px;
+      &.good-yield{
+        color:#03ba4e;
+      }
+      &.bad-yield{
+        color:#ba0303;
+      }
+    }
+    button{
+      mat-icon{
+        color: #555;
+      }
+      &:focus {
+        outline:0;
+      }
+    }
+  }
+
+  .batch-group-row{
+    display: flex;
+    width: 100%;
+    .batch-group-open{
+      margin-right: 5px;
+      margin-left:5%;
+    }
+    .batch-group-name{
+      width:60%;
+      font-size: 0.9em;
+      padding-top: 5px;
+      color: #888;
+    }
+    .batch-group-yield{
+      text-align: right;
+      font-size: 0.9em;
+      width: 15%;
+      padding-top: 5px;
+      &.good-yield{
+        color:#03ba4e;
+      }
+      &.bad-yield{
+        color:#ba0303;
+      }
+    }
+    button{
+      mat-icon{
+        font-size: 1.05em;
+        color: #888;
+      }
+      &:focus {
+        outline:0;
+      }
+    }
+  }
+
+  .batch-row{
+    display: flex;
+    width: 100%;
+    margin-bottom: 5px;
+    .batch-choose{
+      margin-right: 10px;
+      margin-left:20%;
+      margin-top: 5px;
+    }
+    .batch-name{
+      width:45%;
+      font-size: 0.9em;
+      padding-top: 5px;
+      color: #888;
+    }
+    .batch-yield{
+      text-align: right;
+      font-size: 0.9em;
+      width: 20%;
+      padding-top: 5px;
+      &.good-yield{
+        color:#03ba4e;
+      }
+      &.bad-yield{
+        color:#ba0303;
+      }
+    }
+    button{
+      mat-icon{
+        font-size: 1.05em;
+        color: #888;
+      }
+      &:focus {
+        outline:0;
+      }
+    }
+  }
+
+
+  .performance-container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    .performance-box{
+        box-shadow: 0px 2px 8px 0px rgb(177, 177, 177);
+        width: 90px;
+        height: 90px;
+        margin: 3%;
+      .performance-subtitle{
+        font-size: 0.75em;
+        padding: 2px;
+        text-align: center;
+        display: block;
+      }
+      .performance-stat{
+        margin-top:15px;
+        font-size: 0.8em;
+        text-align: center;
+        font-weight: bold;
+        display: block;
+      }
+    }
+  }
+
+  .submit-btn{
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    button{
+      margin: 0 auto;
+      &.mat-primary:enabled{
+        background-color: rgb(18, 211, 245);
+      }
+    }
+  }
+}
+
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background{
+  background-color: rgb(18, 211, 245);
+}
+
+

@@ -1,0 +1,89 @@
+<div class="widget-container">
+  <div class="widget-title">
+    <h5 class="d-inline-block">
+      <img src="assets/icons/MIQ View.svg" width="45" height="45" alt="" class="d-inline-block align-center idc-icon"> MIQ View
+    </h5>
+    <div class="widget-tabs">
+      <div class="d-inline">
+        <div class="tab" [class.active]="activeTab == 'daily'" (click)="changeTab('daily')"> Daily </div>
+      </div>
+      <div class="d-inline">
+        <div class="tab" [class.active]="activeTab == 'weekly'" (click)="changeTab('weekly')"> Weekly </div>
+      </div>
+      <div class="d-inline">
+        <div class="tab" [class.active]="activeTab == 'monthly'" (click)="changeTab('monthly')"> Monthly </div>
+      </div>
+      <div class="d-inline" *ngIf="expandable">
+        <button mat-icon-button class="d-inline" (click)="expandSelf()">
+          <mat-icon aria-label="Change Chart Type">fullscreen</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="float-right mt-2 mr-2">
+    <button mat-mini-fab class="d-inline" mat-button [matMenuTriggerFor]="menu">
+      <mat-icon aria-label="Change Chart Type" *ngIf="activeChart == 'lineChart'">show_chart</mat-icon>
+      <mat-icon aria-label="Change Chart Type" *ngIf="activeChart == 'barChart'">equalizer</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="chartChange('lineChart')">Line Chart</button>
+      <button mat-menu-item (click)="chartChange('barChart')">Bar Chart</button>
+    </mat-menu>
+  </div>
+
+  <div class="crumb-container">
+    <div class="crumb d-inline">Plant</div>
+    <mat-icon>chevron_right</mat-icon>
+    <div class="crumb d-inline">Equipment</div>
+    <mat-icon>chevron_right</mat-icon>
+    <div class="crumb d-inline">Product</div>
+    <mat-icon>chevron_right</mat-icon>
+    <div class="crumb d-inline">
+      <b>Batch {{batchNumber}}</b>
+    </div>
+  </div>
+
+  <div class="axis-label">Yield (%)</div>
+
+  <div class="chart-container" [style.height.vh]="chartHeight">
+    <ngx-charts-line-chart
+      *ngIf="activeChart == 'lineChart'"
+      [results]="lineData"
+      [scheme]="colorScheme"
+      [schemeType]="'linear'"
+      [xAxis]="true"
+      [yAxis]="true"
+      [legend]="false"
+      [yScaleMax]="100"
+      [yScaleMin]="0"
+      [showRefLines]="true"
+      [referenceLines]="yieldRef"
+      [customColors]="customColors"
+      (select)="moveQuadView($event)">
+    </ngx-charts-line-chart>
+
+    <ngx-charts-bar-vertical
+      *ngIf="activeChart == 'barChart'"
+      [results]="barData"
+      [scheme]="colorScheme"
+      [xAxis]="true"
+      [yAxis]="true"
+      [legend]="false"
+      [customColors]="customColors"
+      [yScaleMax]="100"
+      [barPadding]="8"
+      (select)="moveQuadView($event)">
+    </ngx-charts-bar-vertical>
+  </div>
+  <div class="mr-4 mt-4 float-right">
+    <button mat-raised-button class="d-inline" [matMenuTriggerFor]="yearMenu">2017
+    </button>
+    <mat-menu #yearMenu="matMenu">
+      <button mat-menu-item>2017</button>
+      <button mat-menu-item>2016</button>
+      <button mat-menu-item>2015</button>
+      <button mat-menu-item>2014</button>
+    </mat-menu>
+  </div>
+</div>

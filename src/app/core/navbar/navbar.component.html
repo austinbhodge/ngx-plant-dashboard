@@ -1,0 +1,29 @@
+<nav class="navbar pr-0">
+  <div class="col-xl-6 col-lg-4 col-md-4 col-sm-4">
+    <a class="navbar-brand" href="#">
+      <img src="assets/icons/Logo_placeholder.svg" width="30" height="30" alt="" class="d-inline-block align-top"> Plant Selection
+    </a>
+  </div>
+
+  <div class="col-xl-3 col-lg-4 col-md-5 pr-0 col-sm-4">
+    <input matInput placeholder="Plant Search" aria-label="Plant Search" [matAutocomplete]="auto" [formControl]="cityCtrl">
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="cityChose($event)" [class]="'autocomplete'">
+      <mat-option *ngFor="let city of filteredCitys | async" [value]="city.name">
+        <span>{{ city.name }}</span> |
+        <small style="color:green;">Yield: {{ city.yieldAverage }}%</small>
+      </mat-option>
+    </mat-autocomplete>
+  </div>
+  <div class="col-xl-3 col-lg-4 col-md-3 col-sm-4 pl-0 pr-0 d-flex justify-content-start">
+      <button role="button">
+          <img src="assets/icons/Notification.svg" width="30" height="30" alt="" class="d-inline align-center">
+      </button>
+      <button role="button">
+          <img src="assets/icons/logout_icon.svg" width="30" height="30" alt="" class="d-inline align-center">
+      </button>
+      <div class="user-greeting mr-auto d-sm-none d-md-none d-lg-block">Hi, <span class="user-name">John Doe</span></div>
+      <div class="user-picture ml-auto">
+        <img src="assets/user-img.png" width="58" height="58">
+      </div>
+  </div>
+</nav>

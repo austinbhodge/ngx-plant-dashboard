@@ -1,0 +1,15 @@
+<div class="top-container">
+    <div class="product-title">
+
+        <h5 class="d-inline-block">
+          <img src="assets/icons/Top_five_product.svg" width="45" height="45" alt="" class="d-inline-block align-center idc-icon">
+          Top 5 Product
+        </h5>
+    </div>
+    <div class="product-container">
+      <div *ngFor="let product of topProducts" class="product-row">
+        <div class="product-name"><div class="dot" [style.background]="product.bulletColor"></div>{{product.productName}}</div>
+        <div class="product-city">{{product.city}}</div>
+      </div>
+    </div>
+</div>

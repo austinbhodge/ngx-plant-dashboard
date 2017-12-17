@@ -1,0 +1,72 @@
+<div *ngIf="!isExpanded">
+  <div class="row top-quad-row">
+    <div class="col-lg-6 col-sm-12">
+      <app-miq-view [chartHeight]="22" [expandable]="true" (expand)="expandWidget($event)"></app-miq-view>
+    </div>
+    <div class="col-lg-6 col-sm-12">
+      <app-process-mining (expand)="expandWidget($event)"></app-process-mining>
+    </div>
+  </div>
+
+  <div class="row bottom-quad-row">
+    <div class="col-lg-6 col-sm-12">
+      <app-decision-tree (openModal)="openChartModal($event)" (expand)="expandWidget($event)"></app-decision-tree>
+    </div>
+    <div class="col-lg-6 col-sm-12">
+      <app-alerts-notifications (openModal)="openMessageModal($event)" (expand)="expandWidget($event)"></app-alerts-notifications>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="isExpanded">
+
+  <div class="row">
+    <div class="col-lg-10" style="height: 90vh;" *ngIf="expandedComponent == 'miq-view'">
+      <app-miq-view [chartHeight]="60" [expandable]="true" (expand)="expandWidget($event)"></app-miq-view>
+    </div>
+    <div class="col-lg-10" style="height: 90vh;" *ngIf="expandedComponent == 'process-mining'">
+      <app-process-mining (expand)="expandWidget($event)" [chartHeight]="82"></app-process-mining>
+    </div>
+    <div class="col-lg-10" style="height: 90vh;" *ngIf="expandedComponent == 'decision-tree'">
+      <app-decision-tree (openModal)="openChartModal($event)" (expand)="expandWidget($event)" [chartHeight]="82"></app-decision-tree>
+    </div>
+    <div class="col-lg-10" style="height: 90vh;" *ngIf="expandedComponent == 'alerts-notifications'">
+      <app-alerts-notifications (openModal)="openMessageModal($event)" (expand)="expandWidget($event)" [chartHeight]="82"></app-alerts-notifications>
+    </div>
+    <div class="col-lg-2 pl-0">
+      <div class="minimized-container">
+        <div class="minimized-widget" [class.active]="expandedComponent == 'miq-view'" (click)="expandWidget('miq-view')">
+          <h6 class="mx-auto p-3">
+            <img src="assets/icons/MIQ_zoom.svg" height="45" width="45" class="d-block align-center mx-auto">
+            MIQ View
+          </h6>
+        </div>
+        <div class="minimized-widget" [class.active]="expandedComponent == 'process-mining'" (click)="expandWidget('process-mining')">
+          <h6 class="mx-auto p-3">
+            <img src="assets/icons/Process_mining_zoom.svg" height="45" width="45" class="d-block align-center mx-auto">
+            Process Mining
+          </h6>
+        </div>
+        <div class="minimized-widget" [class.active]="expandedComponent == 'decision-tree'" (click)="expandWidget('decision-tree')">
+          <h6 class="mx-auto p-3">
+            <img src="assets/icons/Decision_tree_zoom.svg" height="45" width="45" class="d-block align-center mx-auto">
+            Decision Tree
+          </h6>
+        </div>
+        <div class="minimized-widget" [class.active]="expandedComponent == 'alerts-notifications'" (click)="expandWidget('alerts-notifications')">
+          <h6 class="mx-auto p-3">
+            <img src="assets/icons/Alert_zoom.svg" height="45" width="45" class="d-block align-center mx-auto">
+            Alerts
+          </h6>
+        </div>
+        <div class="minimized-widget" (click)="showQuadView()">
+          <h6 class="mx-auto p-3">
+            <img src="assets/icons/Quadrant_view.svg" height="45" width="45" class="d-block align-center mx-auto">
+            Dashboard
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

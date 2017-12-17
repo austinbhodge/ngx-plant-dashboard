@@ -1,0 +1,51 @@
+<h5>
+    <img src="assets/icons/Plant_Icon.svg" width="40" height="40" alt="" class="d-inline-block align-center idc-icon">
+    Plant Map
+</h5>
+
+
+<agm-map [latitude]="lat" [longitude]="lng" [styles]="styles" [zoom]="zoom" [zoomControl]="false" [streetViewControl]="false">
+
+  <agm-marker
+    *ngFor="let plant of plants;"
+    [latitude]="plant.latitude"
+    [longitude]="plant.longitude"
+    [iconUrl]="getMapIcon(plant.isPositive)">
+
+  <agm-info-window>
+    <h6 class="plant-title">{{plant.name}}</h6>
+    <hr>
+    <table class="product-table">
+        <tr *ngFor="let product of plant.products;" class="product-row" (click)="productClicked(product.id)">
+          <td><div [class.green-dot]="product.isPositive" [class.red-dot]="!product.isPositive"></div></td>
+          <td><div class="product-title">{{product.name}}</div></td>
+          <td><div class="product-yield" [class.positive]="product.isPositive" [class.negative]="!product.isPositive">{{product.yield}} %</div></td>
+        </tr>
+      </table>
+  </agm-info-window>
+
+</agm-marker>
+
+</agm-map>
+
+<div class="zoom-slider-container">
+  <div class="zoom-button">
+    <button mat-icon-button (click)="zoomClicked(-1)">
+      <mat-icon>remove</mat-icon>
+    </button>
+  </div>
+  <mat-slider
+    class="example-margin"
+    [max]="20"
+    [min]="0"
+    [step]="1"
+    [thumb-label]="true"
+    [value]="zoom"
+    (input)="zoomChanged($event)">
+</mat-slider>
+  <div class="zoom-button">
+    <button mat-icon-button (click)="zoomClicked(1)">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

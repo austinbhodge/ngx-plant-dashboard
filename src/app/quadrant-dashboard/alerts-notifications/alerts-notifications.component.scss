@@ -1,0 +1,24 @@
+
+
+button{
+  margin: auto;
+  margin-bottom: 5px;
+  &.mat-button{
+    min-width: 65px;
+    line-height: 28px;
+    color: white;
+    padding-left: 4px;
+    padding-right: 4px;
+    &.view{
+      background: rgb(110, 135, 212);
+    }
+    &.send{
+      background: rgb(74, 191, 245);
+    }
+  }
+
+  &:focus {
+    outline:0;
+  }
+}
+

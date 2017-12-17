@@ -1,0 +1,15 @@
+<div [ngClass]="{'sidebar-margin': sidebarOpen}">
+<router-outlet></router-outlet>
+</div>
+<div class="map-list-toggle" [class.sidebarPosition]="sidebarOpen">
+    <button mat-fab routerLink="/plant/map" routerLinkActive="active">
+        <mat-icon aria-label="Go to map page">map</mat-icon>
+    </button>
+    <button mat-fab routerLink="/plant/list" routerLinkActive="active">
+        <mat-icon aria-label="Go to list page">list</mat-icon>
+    </button>
+</div>
+
+<div *ngIf="sidebarOpen">
+  <app-plant-sidebar [productId]="productId"></app-plant-sidebar>
+</div>

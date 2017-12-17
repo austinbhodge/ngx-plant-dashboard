@@ -1,0 +1,28 @@
+.map-list-toggle{
+  position: absolute;
+  top: 100px;
+  right: 80px;
+  z-index: 200;
+  &.sidebarPosition{
+    right: 500px;
+  }
+  button{
+    &.mat-fab{
+      border-radius:10px;
+      margin: 10px;
+      background: #fff;
+      color: #666;
+      &.active{
+        background: #03bb4f;
+        color: #fff;
+      }
+    }
+    &:focus {
+      outline:0;
+    }
+  }
+}
+
+.sidebar-margin{
+  margin-right: 450px;
+}
